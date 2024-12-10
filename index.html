@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Your Emotion</title>
+    <script defer src="./face-api.min.js"></script> <!-- 올바른 경로로 변경 -->
+    <script defer src="./script.js"></script> <!-- 스크립트 파일 -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: black; /* 검은 배경 */
+            color: white; /* 흰색 텍스트 */
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        h1, p {
+            margin: 0;
+            opacity: 0;
+            animation: fadeIn 2s ease-in-out forwards;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation-delay: 0.5s;
+        }
+
+        p {
+            font-size: 1.5rem;
+            animation-delay: 1.5s;
+        }
+
+        #clickText {
+            font-size: 1.2rem;
+            margin-top: 50px;
+            display: none; /* 초기에는 보이지 않음 */
+        }
+
+        video, #colorBox, #expression {
+            display: none; /* 초기에는 보이지 않음 */
+        }
+
+        #colorBox {
+            width: 200px;
+            height: 100px;
+            margin-top: 20px;
+        }
+
+        #emotionResult {
+            display: none;
+            text-align: center;
+        }
+
+        #emotionResult h2 {
+            margin-bottom: 10px;
+        }
+
+        #emotionResult p {
+            font-size: 1.5rem;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <h1>About Your Emotion</h1>
+    <p>당신의 감정을 확인해보세요.</p>
+    <p id="clickText">화면을 클릭하세요.</p>
+    <video id="video" width="720" height="560" autoplay muted></video>
+    <div id="colorBox"></div>
+    <div id="expression"></div>
+    <div id="emotionResult">
+        <h2>당신의 감정은 현재...</h2>
+        <p id="mainEmotion"></p>
+        <div id="finalColorBox"></div>
+    </div>
+</body>
+</html>
